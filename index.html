@@ -105,19 +105,33 @@
             startConfetti();
         }
 
+        let confettiCount = {}; // Object to track confetti splurts per image
+
         document.addEventListener("scroll", function() {
             let elements = document.querySelectorAll(".image-wrapper");
             elements.forEach(el => {
                 let rect = el.getBoundingClientRect();
                 let img = el.querySelector(".image-container");
                 let message = el.querySelector(".message");
+                let imageId = el.querySelector(".image-container").src;
+
+                // Initialize the confetti count for the image if not already
+                if (!confettiCount[imageId]) {
+                    confettiCount[imageId] = 0;
+                }
+
                 // Reduced the sensitivity for fading in/out
                 if (rect.top < window.innerHeight - 150 && rect.bottom > 150) {
                     img.classList.add("fade-in");
                     img.classList.remove("fade-out");
                     message.style.display = "block";
                     message.textContent = el.getAttribute("data-message");
-                    confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
+
+                    // Trigger confetti only if it hasn't exceeded 3 splurts
+                    if (confettiCount[imageId] < 3) {
+                        confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
+                        confettiCount[imageId]++;
+                    }
                 } else {
                     img.classList.add("fade-out");
                     img.classList.remove("fade-in");
@@ -129,4 +143,3 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
-
