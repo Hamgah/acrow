@@ -44,14 +44,16 @@
             border-radius: 8px; /* Rounded corners for the images */
             transition: opacity 1.5s ease-in-out;
         }
-        .confetti-button {
+        .confetti-button, .press-me-button {
             background-color: red;
             width: 50px;
             height: 50px;
             border-radius: 50%;
             border: none;
             cursor: pointer;
-            margin-top: 50px;
+        }
+        .press-me-button {
+            margin-bottom: 20px; /* Adds space between "Press Me" button and the red button */
         }
         .fade-in {
             opacity: 1 !important;
@@ -77,23 +79,26 @@
             <p class="message"></p>
             <img class="image-container" src="IMG_8667.jpg" alt="Image 1">
         </div>
-        <div class="image-wrapper" data-message="Wishing you an amazing year ahead! 🎈">
+        <div class="image-wrapper" data-message="special happy birthday from chip the dog">
             <p class="message"></p>
             <img class="image-container" src="20250216_095555.jpg" alt="Image 2">
         </div>
-        <div class="image-wrapper" data-message="Time to celebrate and make wonderful memories! 🎁">
+        <div class="image-wrapper" data-message="I'm new to this...">
             <p class="message"></p>
             <img class="image-container" src="patrick-mouth.gif" alt="Image 3">
         </div>
-        <div class="image-wrapper" data-message="You're an incredible person, enjoy your day! 🎊">
+        <div class="image-wrapper" data-message="We all love u unc">
             <p class="message"></p>
             <img class="image-container" src="remix-553a47d0-bc6e-4141-a8f9-84a8738ecd23.png" alt="Image 4">
         </div>
-        <div class="image-wrapper" data-message="Cheers to more happiness and success! 🥂">
+        <div class="image-wrapper" data-message="happy birthday from all of us!<br>tilday and strekkers didnt respond make fun of them">
             <p class="message"></p>
-            <img class="image-container" src="photo5.jpg" alt="Image 5">
+            <img class="image-container" src="image_5.jpg" alt="Image 5">
         </div>
     </div>
+    <!-- New "Press Me" button added here -->
+    <button class="press-me-button" onclick="alert('You pressed me!')">Press Me</button>
+    <!-- The original confetti button -->
     <button class="confetti-button" onclick="startConfetti()"></button>
     
     <script>
