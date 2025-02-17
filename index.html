@@ -6,30 +6,43 @@
     <title>Happy Birthday Unc</title>
     <style>
         body {
-            background-color: #FFFFFF;
-            color: #008B8B;
+            background-color: #F0F8FF; /* Light background color */
+            color: #2F4F4F; /* Darker text for readability */
             text-align: center;
-            font-family: Arial, sans-serif;
-            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
         }
         h1 {
             font-size: 3rem;
             margin-top: 50px;
             color: #008B8B;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
         }
         .gallery {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 30px;
+            gap: 30px; /* Added more space between photos */
+        }
+        .image-wrapper {
+            border: 5px solid #00CED1; /* Added border around each photo and text */
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for better contrast */
+            max-width: 90%; /* Keep images responsive */
+            transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+        }
+        .image-wrapper:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
         }
         .image-container {
-            opacity: 0;
+            width: 100%;
+            max-width: 500px; /* Larger image size */
+            border-radius: 8px; /* Rounded corners for the images */
             transition: opacity 1.5s ease-in-out;
-            margin: 20px;
-            border: 5px solid lightblue;
-            padding: 10px;
-            background-color: white;
         }
         .confetti-button {
             background-color: red;
@@ -53,6 +66,7 @@
             font-size: 1.5rem;
             margin-top: 20px;
             color: #008B8B;
+            font-weight: bold; /* Make text stand out more */
         }
     </style>
 </head>
@@ -60,44 +74,45 @@
     <h1>Happy Birthday Unc! 🎉</h1>
     <div class="gallery">
         <div class="image-wrapper" data-message="Happy Birthday Uncy Wuncy! You are at the big 30! 🎂">
-            <img class="image-container" src="IMG_8667.jpg" width="300">
             <p class="message"></p>
+            <img class="image-container" src="IMG_8667.jpg" alt="Image 1">
         </div>
         <div class="image-wrapper" data-message="Wishing you an amazing year ahead! 🎈">
-            <img class="image-container" src="20250216_095555.jpg" width="300">
             <p class="message"></p>
+            <img class="image-container" src="20250216_095555.jpg" alt="Image 2">
         </div>
         <div class="image-wrapper" data-message="Time to celebrate and make wonderful memories! 🎁">
-            <img class="image-container" src="patrick-mouth.gif" width="300">
             <p class="message"></p>
+            <img class="image-container" src="patrick-mouth.gif" alt="Image 3">
         </div>
         <div class="image-wrapper" data-message="You're an incredible person, enjoy your day! 🎊">
-            <img class="image-container" src="remix-553a47d0-bc6e-4141-a8f9-84a8738ecd23.png" width="300">
             <p class="message"></p>
+            <img class="image-container" src="remix-553a47d0-bc6e-4141-a8f9-84a8738ecd23.png" alt="Image 4">
         </div>
         <div class="image-wrapper" data-message="Cheers to more happiness and success! 🥂">
-            <img class="image-container" src="photo5.jpg" width="300">
             <p class="message"></p>
+            <img class="image-container" src="photo5.jpg" alt="Image 5">
         </div>
     </div>
     <button class="confetti-button" onclick="startConfetti()"></button>
     
     <script>
         function startConfetti() {
-            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            confetti({ particleCount: 75, spread: 100, origin: { y: 0.6 } });
         }
-        
+
         window.onload = function() {
             startConfetti();
         }
-        
+
         document.addEventListener("scroll", function() {
             let elements = document.querySelectorAll(".image-wrapper");
             elements.forEach(el => {
                 let rect = el.getBoundingClientRect();
                 let img = el.querySelector(".image-container");
                 let message = el.querySelector(".message");
-                if (rect.top < window.innerHeight - 50 && rect.bottom > 50) {
+                // Reduced the sensitivity for fading in/out
+                if (rect.top < window.innerHeight - 150 && rect.bottom > 150) {
                     img.classList.add("fade-in");
                     img.classList.remove("fade-out");
                     message.style.display = "block";
@@ -114,3 +129,4 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
+
